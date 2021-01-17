@@ -3,6 +3,9 @@ import React from "react";
 
 class App extends React.Component
 {
+    constructor() {
+        super();
+    }
     state = {
         count: 0
     };
@@ -13,7 +16,21 @@ class App extends React.Component
     minus = () => {
         this.setState(current=>({count: current.count-1}));
     };
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('I just updated!');
+    }
+
+    componentDidMount() {
+        console.log('component rendered!');
+    }
+
+    componentWillUnmount() {
+        console.log('Goodbye Well done!');
+    }
+
     render(){
+        console.log('I am rendering');
         return <div>
             <h1>The number is : {this.state.count}</h1>
             <button onClick={this.add}>Add</button>
